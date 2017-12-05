@@ -35,3 +35,16 @@ extension FirstViewController: SecondViewControllerDelegate {
     }
 }
 
+extension UIViewController {
+    public func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc public func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    // call  `hideKeyboardWhenTappedAround` on `ViewDidLoad`
+} 
+
